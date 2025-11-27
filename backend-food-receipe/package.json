@@ -1,28 +1,35 @@
 {
   "name": "backend-food-receipe",
   "version": "1.0.0",
+  "description": "Full-stack Recipes API with Express + Drizzle ORM + PostgreSQL",
   "main": "index.js",
-  "scripts": {
-    "dev": "nodemon --watch src --exec ts-node index.ts",
-    "build": "tsc",
-    "start": "node index.ts",
-    "seed": "ts-node db/seed.ts"
-  },
   "type": "module",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "build": "echo 'No build step needed for JavaScript'",
+    "db:generate": "drizzle-kit generate:pg",
+    "db:push": "drizzle-kit push:pg",
+    "db:migrate": "drizzle-kit push:pg",
+    "db:studio": "drizzle-kit studio",
+    "seed": "node db/seed.js",
+    "db:reset": "npm run db:push && npm run seed"
+  },
+  "keywords": ["express", "drizzle-orm", "postgresql", "recipes", "api"],
+  "author": "Your Name",
+  "license": "MIT",
   "dependencies": {
+    "express": "^4.19.2",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "drizzle-orm": "^0.44.7",
-    "express": "^5.1.0",
-    "pg": "^8.16.3",
-    "zod": "^4.1.13"
+    "dotenv": "^16.4.5",
+    "pg": "^8.12.0",
+    "drizzle-orm": "^0.29.0"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.31.7",
-    "ts-node": "^10.9.2"
+    "drizzle-kit": "^0.24.4"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }
