@@ -50,7 +50,7 @@ export default function RecipesTableWrapper({
     }
   };
 
-  const handleApply = (params: { search: string; filter: string; limit: string }) => {
+  const handleApply = (params: { search: string; filter: string; limit?: string }) => {
     const urlParams = new URLSearchParams(searchParams.toString());
 
     if (params.search) {
