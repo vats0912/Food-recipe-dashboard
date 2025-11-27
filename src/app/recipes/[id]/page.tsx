@@ -1,27 +1,12 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { fetchRecipe } from "@/app/lib/api";
 import { useParams } from "next/navigation";
 
-type Recipe = {
-  id: number;
-  name: string;
-  description: string;
-  ingredients: string[];
-  steps: string[];
-  image_url?: string;
-  category: string;
-  macrosProtein: number;
-  macrosCarbs: number;
-  macrosFats: number;
-  macrosCalories: number;
-};
-
 export default function RecipeDetail() {
   const params = useParams();
   const id = params?.id;
-  const [recipe, setRecipe] = useState<Recipe | null>(null);
+  const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -52,7 +37,9 @@ export default function RecipeDetail() {
         ❌ Recipe not found.
       </div>
     );
-console.log(recipe)
+
+  console.log(recipe);
+
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="flex flex-col lg:flex-row gap-10">
