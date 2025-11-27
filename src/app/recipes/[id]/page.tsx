@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { fetchRecipe } from "@/app/lib/api";
+import { fetchRecipe } from "../../lib/api";
 import { useParams } from "next/navigation";
 
 export default function RecipeDetail() {
