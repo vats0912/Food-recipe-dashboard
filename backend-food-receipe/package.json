@@ -1,0 +1,28 @@
+{
+  "name": "backend-food-receipe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch src --exec ts-node index.ts",
+    "build": "tsc",
+    "start": "node index.ts",
+    "seed": "ts-node db/seed.ts"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.44.7",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.7",
+    "ts-node": "^10.9.2"
+  }
+}
