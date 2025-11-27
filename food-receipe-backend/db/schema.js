@@ -14,3 +14,4 @@ export const recipes = pgTable("recipes", {
   category: text("category").notNull(),
   createdAt: timestamp("created_at").defaultNow(),
 });
+

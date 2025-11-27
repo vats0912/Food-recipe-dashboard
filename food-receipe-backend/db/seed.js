@@ -1,5 +1,5 @@
-import { db } from "./client.ts";
-import { recipes } from "./schema.ts";
+import { db } from "./client.js";
+import { recipes } from "./schema.js";
 
 const baseRecipes = [
   { name: "Paneer Tikka", category: "Veg", protein: 20, carbs: 10, fats: 12, calories: 250 },
@@ -16,14 +16,13 @@ const baseRecipes = [
   { name: "Mutton Rogan Josh", category: "Non-Veg", protein: 35, carbs: 15, fats: 28, calories: 520 },
   { name: "Idli Sambar", category: "Main Course", protein: 12, carbs: 40, fats: 6, calories: 280 },
   { name: "Kheer", category: "Dessert", protein: 8, carbs: 55, fats: 12, calories: 350 },
-
 ];
 
-function makeRecipe(i: number) {
+function makeRecipe(i) {
   const r = baseRecipes[i % baseRecipes.length];
   return {
-    name: `${r?.name} #${i + 1}`,
-    description: `A delicious ${r?.category} recipe variation ${i + 1}.`,
+    name: `${r.name} #${i + 1}`,
+    description: `A delicious ${r.category} recipe variation ${i + 1}.`,
     ingredients: JSON.stringify(["Salt", "Spices", "Oil", "Onion", "Tomato"]),
     steps: JSON.stringify(["Prep ingredients", "Cook base", "Serve hot"]),
     imageUrl: `https://picsum.photos/seed/recipe${i}/400/300`,
@@ -36,9 +35,10 @@ function makeRecipe(i: number) {
 }
 
 async function main() {
-  // clear existing
+  // Clear existing data
   await db.delete(recipes);
 
+  // Generate 60 recipes
   const data = Array.from({ length: 60 }, (_, i) => makeRecipe(i));
   await db.insert(recipes).values(data);
 
@@ -46,4 +46,4 @@ async function main() {
   process.exit(0);
 }
 
-main();
+main().catch(console.error);
